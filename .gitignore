@@ -1,4 +1,4 @@
-dea/
-.history
-dist/
-/project/tmp
+target/
+.project
+*.iml
+*.idea
