@@ -66,6 +66,26 @@ class Tests extends Specification
       Problems.duplicate(p15._1, p15._2) must beEqualTo(a15)
     }
 
+    "problem 16 " in {
+      Problems.dropNth(p16._1, p16._2) must beEqualTo(a16)
+    }
+
+    "problem 17 " in {
+      Problems.splitAt(p17._1, p17._2) must beEqualTo(a17)
+    }
+
+    "problem 18 " in {
+      Problems.takeSlice(p18._1, p18._2, p18._3) must beEqualTo(a18)
+    }
+
+    "problem 19 " in {
+      Problems.rotateLeft(p19a._1, p19a._2) must beEqualTo(a19a)
+      Problems.rotateLeft(p19b._1, p19b._2) must beEqualTo(a19b)
+    }
+
+    "problem 20 " in {
+      Problems.removeNth(p20._1, p20._2) must beEqualTo(a20)
+    }
   }
 
 }

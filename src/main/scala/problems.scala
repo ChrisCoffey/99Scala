@@ -67,4 +67,41 @@ object Problems {
   def duplicate[A](n: Int, lst:List[A]): List[A] =
     lst.foldRight(List[A]()){(a, acc)=> List.fill(n)(a) ::: acc}
 
+  def dropNth[A](n: Int, lst: List[A]): List[A] ={
+    def go(i:Int, l: List[A], acc: List[A]): List[A] = {
+      l match{
+        case h :: t if i == 1 => go(n, t, acc)
+        case h :: t => go(i-1, t, h :: acc)
+        case _ => reverse(acc)
+      }
+    }
+    go(n, lst, List[A]())
+  }
+
+  def splitAt[A](n: Int, lst: List[A]): (List[A], List[A]) =
+    lst.zipWithIndex.foldRight((List[A](), List[A]())){(a, acc) =>
+      if(a._2 < n) (a._1 :: acc._1, acc._2) else (acc._1, a._1 :: acc._2)
+    }
+
+  def takeSlice[A](x: Int, y: Int, lst: List[A]): List[A] =
+    lst.drop(x).take(y-x)
+
+  def rotateLeft[A](n: Int, lst: List[A]): List[A] =
+    n match{
+      case x if x < 0 => lst.takeRight(n * -1) ::: lst.dropRight(n * -1)
+      case _ => lst.drop(n) ::: lst.take(n)
+    }
+
+  //This is lower level than the textbook answer... I really like this version:
+//  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
+//    case (Nil, _) if n < 0 => throw new NoSuchElementException
+//    case (pre, e :: post)  => (pre ::: post, e)
+//    case (pre, Nil)        => throw new NoSuchElementException
+
+  def removeNth[A](n: Int, lst: List[A]): (List[A], A) =
+    lst.zipWithIndex.foldRight((List[A](), lst.head)){(a, acc) =>
+      a match{
+        case (x, y) if y == n => (acc._1, x)
+        case (x, y) => (x :: acc._1, acc._2)
+    }}
 }

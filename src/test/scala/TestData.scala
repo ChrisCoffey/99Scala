@@ -47,4 +47,20 @@ trait TestData {
 
   val p16 = (3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
   val a16 = List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
+
+  val p17 = (3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+  val a17 = (List('a, 'b, 'c),List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+  val p18 = (3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+  val a18 = List('d, 'e, 'f, 'g)
+
+  val p19a = (3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+  val a19a = List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c)
+  val p19b = (-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+  val a19b = List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
+
+  val p20 =  (1, List('a, 'b, 'c, 'd))
+  val a20 =  (List('a, 'c, 'd),'b)
+
+
 }
