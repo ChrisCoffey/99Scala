@@ -62,5 +62,43 @@ trait TestData {
   val p20 =  (1, List('a, 'b, 'c, 'd))
   val a20 =  (List('a, 'c, 'd),'b)
 
+  val p21 = ('new, 1, List('a, 'b, 'c, 'd))
+  val a21 = List('a, 'new, 'b, 'c, 'd)
+
+  val p22 = (4, 9)
+  val a22 = List(4, 5, 6, 7, 8, 9)
+
+  val p23 = (3, List('a, 'b, 'c, 'd, 'f, 'g, 'h))
+  val a23 = List('e, 'd, 'a)
+
+  val p24 = (6, 49)
+  val a24 = List(23, 1, 17, 33, 21, 37)
+
+  val p25 = List('a, 'b, 'c, 'd, 'e, 'f)
+  val a25 = List('b, 'a, 'd, 'c, 'e, 'f)
+
+  val p26 = (3, List('a, 'b, 'c, 'd, 'e, 'f))
+  val a26 = List(List('a, 'b, 'c), List('a, 'b, 'd), List('a, 'b, 'e))
+
+  val p27 = ???
+  val a27 = ???
+
+  val p28 = List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))
+  val a28 = List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l))
+
+  val p29 = List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))
+  val a29 = List(List('i, 'j, 'k, 'l), List('o), List('a, 'b, 'c), List('f, 'g, 'h), List('d, 'e), List('d, 'e), List('m, 'n))
+
+  val p30 = 7
+  val a30 = true
+
+  val p31 = (36, 63)
+  val a31 = 9
+
+  val p32 = (35, 64)
+  val a32 = true
+
+  val p33 = 10
+  val a33 = 4
 
 }

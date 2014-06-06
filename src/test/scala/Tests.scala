@@ -86,6 +86,17 @@ class Tests extends Specification
     "problem 20 " in {
       Problems.removeNth(p20._1, p20._2) must beEqualTo(a20)
     }
+
+    "problem 21 " in {
+      Problems.insertAt(p21._1, p21._2, p21._3) must beEqualTo(a21)
+    }
+
+    "problem 22 " in {
+      Problems.range(p22._1, p22._2) must beEqualTo(a22)
+    }
+
+
+
   }
 
 }
