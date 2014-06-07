@@ -80,8 +80,8 @@ trait TestData {
   val p26 = (3, List('a, 'b, 'c, 'd, 'e, 'f))
   val a26 = List(List('a, 'b, 'c), List('a, 'b, 'd), List('a, 'b, 'e))
 
-  val p27 = ???
-  val a27 = ???
+  val p27 = true
+  val a27 = false
 
   val p28 = List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))
   val a28 = List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l))
@@ -89,16 +89,16 @@ trait TestData {
   val p29 = List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))
   val a29 = List(List('i, 'j, 'k, 'l), List('o), List('a, 'b, 'c), List('f, 'g, 'h), List('d, 'e), List('d, 'e), List('m, 'n))
 
-  val p30 = 7
-  val a30 = true
+  val p31 = 7
+  val a31 = true
 
-  val p31 = (36, 63)
-  val a31 = 9
+  val p32 = (36, 63)
+  val a32 = 9
 
-  val p32 = (35, 64)
-  val a32 = true
+  val p33 = (35, 64)
+  val a33 = true
 
-  val p33 = 10
-  val a33 = 4
+  val p34 = 10
+  val a34 = 4
 
 }

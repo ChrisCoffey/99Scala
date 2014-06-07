@@ -1,5 +1,17 @@
 import scala.util.Random
 
+class S99Int(val start: Int) {
+  import S99Int._
+
+  def isPrime: Boolean = (start >1) && (primes.takeWhile{_ <= Math.sqrt(start).toInt} forall{start % _ != 0})
+}
+
+object S99Int {
+  implicit def int2S99Int(i: Int): S99Int = new S99Int(i)
+
+  def primes = Stream.cons(2, Stream.from(3, 2))
+}
+
 object Problems {
   def last[A](lst: List[A]) = lst.reverse.head
 
@@ -121,7 +133,7 @@ object Problems {
         case h :: t => go( n-1, h + 1 :: lst)
         case _ => lst
       }
-    go(end - start, List(start))
+    go(end - start, List(start)).reverse
   }
 
   //standard recursive, but obviously no tail recursion
@@ -149,11 +161,43 @@ object Problems {
   def shuffle[A](lst: List[A]): List[A] =
     randomSelect(lst.length, lst)
 
-  def permutations[A](len: Int, lst: List[A]): List[A] =
-    if (len == 0) lst else
+  def subsetFlatMap[A, B](lst: List[A])(f: List[A] => List[B]): List[B] =
     lst match{
-      case h :: t => h :: permutations(len -1, shuffle(lst))
+      case Nil => Nil
+      case subset@(_ :: t) => f(subset) ::: subsetFlatMap(t)(f)
     }
+
+  def permutations[A](len: Int, lst: List[A]): List[List[A]] =
+    if (len == 0) Nil else
+    subsetFlatMap(lst){ l =>
+      permutations(len -1, l.tail).map {l.head :: _ }
+    }
+
+  //Skipping 28 & 29 for now
+
+  //simple naieve implementation that also creates memory pressure initially. The list significantly shrinks as we progress
+  def isPrime(i: Int): Boolean = {
+    def checkPrimality(lst: List[Int]): Boolean ={
+      lst match{
+        case h :: t if i % h == 0 => true
+        case h :: t => checkPrimality(t.filter(n => n % h != 0))
+        case Nil => false
+      }
+    }
+    checkPrimality(range(1, math.sqrt(i).toInt))
+  }
+
+  def gcd(x: Int, y: Int): Int = {
+    val start = x max y
+    val r = for {
+      i <- Range(start, 0, -1)
+      if (x % i == 0 && y % i == 0)
+    } yield i
+    r.head
+  }
+
+  def euclidGCD(x: Int, y: Int): Int = if(y == 0) x else euclidGCD(y, x % y)
+
 
 
 }

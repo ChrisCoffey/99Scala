@@ -95,6 +95,18 @@ class Tests extends Specification
       Problems.range(p22._1, p22._2) must beEqualTo(a22)
     }
 
+    "problem 31 " in {
+      Problems.isPrime(p31) must beEqualTo(a31)
+    }
+
+    "problem 32 " in {
+      Problems.gcd(p32._1, p32._2) must beEqualTo(a32)
+      Problems.euclidGCD(p32._1, p32._2) must beEqualTo(a32)
+    }
+
+    "problem 33 " in {
+      Problems
+    }
 
 
   }
