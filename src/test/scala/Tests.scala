@@ -116,6 +116,14 @@ class Tests extends Specification
       Problems.primeFactors(p35) must beEqualTo(a35)
     }
 
+    "problem 36 " in {
+      Problems.primeFactorGroups(p36) must beEqualTo(a36)
+    }
+
+    "problem 37 " in {
+      Problems.fastTotient(p37) must beEqualTo(a37)
+    }
+
   }
 
 }

@@ -213,6 +213,18 @@ object Problems {
     pFactors(x, primes(ints(2)))
   }
 
+  def primeFactorGroups(x: Int): List[(Int, Int)] =
+    primeFactors(x).foldRight(List[(Int, Int)]()) { (i, acc) =>
+      acc match{
+        case h :: t if h._1 == i => (h._1, h._2 +1) :: t
+        case _ => (i, 1) :: acc
+      }
+    }
+
+  def fastTotient(x: Int) : Int =
+    primeFactorGroups(x).foldRight(1){(p, acc) =>
+      acc * (p._1 -1)* (Math.pow(p._1, p._2 -1).toInt)
+    }
 
 
 }
