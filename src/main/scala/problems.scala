@@ -1,18 +1,9 @@
 import scala.util.Random
 
-class S99Int(val start: Int) {
-  import S99Int._
-
-  def isPrime: Boolean = (start >1) && (primes.takeWhile{_ <= Math.sqrt(start).toInt} forall{start % _ != 0})
-}
-
-object S99Int {
-  implicit def int2S99Int(i: Int): S99Int = new S99Int(i)
-
-  def primes = Stream.cons(2, Stream.from(3, 2))
-}
-
 object Problems {
+
+
+
   def last[A](lst: List[A]) = lst.reverse.head
 
   def penultimate[A](lst: List[A]) = {
@@ -175,17 +166,18 @@ object Problems {
 
   //Skipping 28 & 29 for now
 
-  //simple naieve implementation that also creates memory pressure initially. The list significantly shrinks as we progress
-  def isPrime(i: Int): Boolean = {
-    def checkPrimality(lst: List[Int]): Boolean ={
-      lst match{
-        case h :: t if i % h == 0 => true
-        case h :: t => checkPrimality(t.filter(n => n % h != 0))
-        case Nil => false
-      }
-    }
-    checkPrimality(range(1, math.sqrt(i).toInt))
-  }
+  def ints(n: Int) : Stream[Int] = Stream.cons(n, ints(n+1))
+  def primes(Z: Stream[Int]) : Stream[Int] =
+    Stream.cons(Z.head, primes(Z.tail) filter { _ % Z.head != 0})
+
+  def primeSieve(n: Int) : List[Int] = primes(ints(2)) take n toList
+
+  def isPrime(start: Int) : Boolean =
+    (start >1) && (primeSieve(Math.sqrt(start).toInt) forall{start % _ != 0})
+
+
+
+  //lazy val primes = Stream.cons(2,Stream.from(3, 2)) filter{ isPrime(_)}
 
   def gcd(x: Int, y: Int): Int = {
     val start = x max y
@@ -197,6 +189,29 @@ object Problems {
   }
 
   def euclidGCD(x: Int, y: Int): Int = if(y == 0) x else euclidGCD(y, x % y)
+
+  def coPrime(x: Int, y: Int): Boolean = euclidGCD(x, y) == 1
+
+  def factors(x: Int): IndexedSeq[Int] =
+    for{
+      i <- 1 to x
+      if (x % i == 0)
+    } yield i
+
+  def totient(x: Int) : Int =
+    (1 to x filter {coPrime(x, _)}).length
+
+  def primeFactors(x: Int): List[Int] ={
+    def pFactors(y: Int, ps: Stream[Int]) : List[Int] = {
+      if (isPrime(y)) List(y)
+      else
+        ps match{
+          case h +: ts if y % h == 0 => h :: pFactors(y/h, ps)
+          case h +: ts => pFactors(y, ts)
+        }
+    }
+    pFactors(x, primes(ints(2)))
+  }
 
 
 

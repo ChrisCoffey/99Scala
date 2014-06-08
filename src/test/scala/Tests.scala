@@ -105,9 +105,16 @@ class Tests extends Specification
     }
 
     "problem 33 " in {
-      Problems
+      Problems.coPrime(p33._1, p33._2) must beEqualTo(a33)
     }
 
+    "problem 34 " in {
+      Problems.totient(p34) must beEqualTo(a34)
+    }
+
+    "problem 35 " in {
+      Problems.primeFactors(p35) must beEqualTo(a35)
+    }
 
   }
 

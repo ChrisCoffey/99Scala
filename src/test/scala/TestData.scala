@@ -101,4 +101,7 @@ trait TestData {
   val p34 = 10
   val a34 = 4
 
+  val p35 = 315
+  val a35 = List(3, 3, 5, 7)
+
 }
